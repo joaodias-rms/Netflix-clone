@@ -16,5 +16,9 @@ export const styles = StyleSheet.create({
     },
     loginInput:{
         marginBottom: 20
+    },
+    smallText:{
+        color: '#555',
+        textAlign: 'center'
     }
 })

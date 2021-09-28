@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, Text} from 'react-native';
 
 import netflixLogo from '../../assets/logo.png';
 import {TextInput, Button} from 'react-native-paper';
@@ -39,12 +39,13 @@ export function Login() {
           onPress={() => {}}>
           Entrar
         </Button>
-        <Button
-          color="#e31e20"
-          style={styles.loginInput}
-          onPress={() => {}}>
+        <Button color="#fff" style={styles.loginInput} onPress={() => {}}>
           Recuperar senha
         </Button>
+        <Text style={styles.smallText}>
+          O acesso é protegido pelo Google reCAPTCHA para garantir que você não
+          é um robô. Saiba mais.
+        </Text>
       </View>
     </View>
   );
