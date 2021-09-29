@@ -14,7 +14,7 @@ export function Hero() {
       <Image
         style={styles.imgLogo}
         resizeMode="contain"
-        source={{uri: 'https://i.imgur.com/4xN7wB8.png'}}
+        source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Breaking_Bad_logo.svg/800px-Breaking_Bad_logo.svg.png'}}
       />
 
       <View style={styles.top10Container}>
