@@ -1,16 +1,35 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import {
+  View,
+  ScrollView,
+} from 'react-native';
+import {Button, Title} from 'react-native-paper';
 
-import { Header } from '../../components/Header'
-import { Hero } from '../../components/Hero'
+import {ButtonHeader} from '../../components/Button';
+import {Header} from '../../components/Header';
+import {Hero} from '../../components/Hero';
+import { Preview } from '../../components/Preview';
 
-import { styles } from './styles'
+import {styles} from './styles';
 
 export function Home() {
-    return (
-        <View style={styles.container}>
-            <Hero />
-            <Header />
-        </View>
-    )
+  return (
+    <ScrollView style={styles.container}>
+      <Hero />
+      <Header />
+
+      <View style={styles.menuHeader}>
+        <ButtonHeader icon="plus" title="Minha lista" />
+        <Button icon="play" color="#fff" mode="contained">
+          Assistir
+        </Button>
+        <ButtonHeader icon="information-outline" title="Saiba mais" />
+      </View>
+
+      <View style={styles.containerPreview}>
+        <Title style={styles.titlePreview}>Prévias</Title>
+      <Preview />
+      </View>
+    </ScrollView>
+  );
 }
