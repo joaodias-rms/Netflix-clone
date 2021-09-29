@@ -10,24 +10,26 @@ export const styles = StyleSheet.create({
        width: '100%',
        marginTop: 200,
        alignSelf: 'center',
-       position: 'absolute',
+       marginBottom: 30,
        zIndex: 10,
    },
    top10Container:{
+    marginTop: 30,
     position: 'absolute',
     zIndex: 10,
-    bottom: 20,
+    bottom: -5,
     flexDirection: 'row',
     justifyContent: 'center',
     width: "100%",
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 60
    },
    top10Logo:{
        height: 40,
        width: 40,
        backgroundColor: '#fff',
        marginRight: 15,
-       borderRadius: 40
+       borderRadius: 40,
    },
    top10Text:{
     color: '#fff',
