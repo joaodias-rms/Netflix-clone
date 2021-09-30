@@ -10,11 +10,11 @@ import {Title} from 'react-native-paper';
 
 import {styles} from './styles';
 
-export function Section({hasBorderTop}) {
+export function Section({hasBorderTop, title}) {
   return (
     <View style={styles.container}>
       {hasBorderTop && <View style={styles.borderTop} />}
-      <Title style={styles.sectionTitle}>Section Name</Title>
+      <Title style={styles.sectionTitle}>{title}</Title>
       <FlatList
         style={styles.list}
         data={[1, 2, 3, 4, 5]}
