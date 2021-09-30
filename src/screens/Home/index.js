@@ -2,7 +2,7 @@ import React from 'react';
 import {View, ScrollView} from 'react-native';
 import {Button, Title} from 'react-native-paper';
 
-import {ButtonHeader} from '../../components/Button';
+import {ButtonVertical} from '../../components/ButtonVertical';
 import {Header} from '../../components/Header';
 import {Hero} from '../../components/Hero';
 import {Preview} from '../../components/Preview';
@@ -17,19 +17,19 @@ export function Home() {
       <Header />
 
       <View style={styles.menuHeader}>
-        <ButtonHeader icon="plus" title="Minha lista" />
+        <ButtonVertical icon="plus" title="Minha lista" />
         <Button icon="play" color="#fff" mode="contained">
           Assistir
         </Button>
-        <ButtonHeader icon="information-outline" title="Saiba mais" />
+        <ButtonVertical icon="information-outline" title="Saiba mais" />
       </View>
 
       <View style={styles.containerPreview}>
         <Title style={styles.titlePreview}>Prévias</Title>
         <Preview />
       </View>
-      {[1, 2, 3, 4].map((section, index )=> (
-        <Section/>
+      {[1, 2, 3, 4].map((section, index) => (
+        <Section title="Novidades" />
       ))}
     </ScrollView>
   );
