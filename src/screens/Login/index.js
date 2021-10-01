@@ -5,12 +5,18 @@ import netflixLogo from '../../assets/logo.png';
 import {TextInput, Button} from 'react-native-paper';
 
 import {styles} from './styles';
+import {useNavigation} from '@react-navigation/native';
 
 export function Login() {
   const [login, setLogin] = useState({
     mail: '',
     password: '',
   });
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.container}>
@@ -36,7 +42,7 @@ export function Login() {
           color="#e31e20"
           mode="contained"
           style={styles.loginInput}
-          onPress={() => {}}>
+          onPress={handleLogin}>
           Entrar
         </Button>
         <Button color="#fff" style={styles.loginInput} onPress={() => {}}>
