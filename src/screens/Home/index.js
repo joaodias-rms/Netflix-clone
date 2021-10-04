@@ -29,7 +29,7 @@ export function Home() {
         <Preview />
       </View>
       {[1, 2, 3, 4].map((section, index) => (
-        <Section title="Novidades" />
+        <Section key={index}title="Novidades" />
       ))}
     </ScrollView>
   );
