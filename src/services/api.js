@@ -1,7 +1,8 @@
 import axios from 'axios'   
 
+
 const api = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: `https://api.themoviedb.org/3`
 })
 
 export default api
