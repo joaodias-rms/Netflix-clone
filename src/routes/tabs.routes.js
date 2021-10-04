@@ -14,7 +14,7 @@ export function TabsRoutes() {
       shifting={false}
       barStyle={{backgroundColor: '#141414'}}>
       <Tab.Screen
-        name="Home"
+        name="Init"
         component={Home}
         options={{
           tabBarLabel: 'Home',
