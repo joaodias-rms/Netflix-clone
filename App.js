@@ -2,9 +2,6 @@ import React from 'react'
 import { StatusBar } from 'react-native'
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper'
 import { Routes } from './src/routes';
-import { Login } from './src/screens/Login';
-import { Home } from './src/screens/Home';
-import { Movies } from './src/screens/Movies';
 
 export default function App() {
   const theme = {
