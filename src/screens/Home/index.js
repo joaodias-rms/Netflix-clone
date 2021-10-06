@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, ScrollView, Alert} from 'react-native';
 import {Button, Title} from 'react-native-paper';
 
@@ -15,29 +15,35 @@ const {APIKEY} = process.env;
 import {styles} from './styles';
 
 export function Home() {
-  const getMovie = async () => {
+  const [main, setMain] = useState({});
+  const [preview, setPreview] = useState([]);
+
+  const getHome = async () => {
     try {
-      const movies = await api.get(
+      const response = await api.get(
         `${api.defaults.baseURL}/discover/movie?api_key=${APIKEY}`,
       );
-      const res = movies.data.results
+      const res = response.data;
 
-
-      if(res.error){
-        Alert(error.message)
+      // console.log(res);
+      if (res.error) {
+        alert(error.message);
+        return false;
       }
+      setMain(res.results[0]);
+      setPreview(res.results);
+
     } catch (error) {
-      Alert(error.message);
+      alert(error.message);
     }
   };
 
   useEffect(() => {
-    getMovie();
+    getHome();
   }, []);
-
   return (
     <ScrollView style={styles.container}>
-      <Hero />
+      <Hero result={main} />
       <Header />
 
       <View style={styles.menuHeader}>
@@ -50,7 +56,7 @@ export function Home() {
 
       <View style={styles.containerPreview}>
         <Title style={styles.titlePreview}>Prévias</Title>
-        <Preview />
+        <Preview results={preview} />
       </View>
       {[1, 2, 3, 4].map((section, index) => (
         <Section key={index} title="Novidades" />

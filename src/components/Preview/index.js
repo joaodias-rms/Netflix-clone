@@ -1,16 +1,20 @@
 import React from 'react';
-import {View, FlatList, Image, TouchableOpacity} from 'react-native';
+import {View, FlatList, Image, TouchableOpacity, Text} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 
 import logoPreview from '../../assets/logo_preview.png';
 import {styles} from './styles';
 
-export function Preview() {
+import api from '../../services/api';
+const {APIKEY} = process.env
+const {IMAGEURL} = process.env
+
+export function Preview({results}) {
   return (
     <View>
       <FlatList
-        data={[1, 2, 3, 4, 5, 6]}
+        data={results}
         horizontal
         style={styles.flatListContainer}
         renderItem={({item, index}) => (
@@ -21,7 +25,7 @@ export function Preview() {
               <Image
                 style={styles.imgPreview}
                 source={{
-                  uri: 'https://observatoriodocinema.uol.com.br/wp-content/uploads/2020/09/O-Diabo-de-Cada-Dia-sem-marca-EW.jpg',
+                  uri: `http://image.tmdb.org/t/p/original${item.poster_path}`,
                 }}
               />
               <Image
