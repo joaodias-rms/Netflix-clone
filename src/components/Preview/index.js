@@ -6,9 +6,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import logoPreview from '../../assets/logo_preview.png';
 import {styles} from './styles';
 
-import api from '../../services/api';
-const {APIKEY} = process.env
-const {IMAGEURL} = process.env
 
 export function Preview({results}) {
   return (
@@ -28,11 +25,11 @@ export function Preview({results}) {
                   uri: `http://image.tmdb.org/t/p/original${item.poster_path}`,
                 }}
               />
-              <Image
+              {/* <Image
                 style={styles.logoPreview}
                 resizeMode="contain"
                 source={logoPreview}
-              />
+              /> */}
               <LinearGradient
                 style={styles.gradient}
                 colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.7)']}
