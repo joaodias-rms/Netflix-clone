@@ -18,6 +18,7 @@ export function Home() {
   const [main, setMain] = useState({});
   const [preview, setPreview] = useState([]);
 
+
   const getHome = async () => {
     try {
       const response = await api.get(
@@ -27,14 +28,14 @@ export function Home() {
 
       // console.log(res);
       if (res.error) {
-        alert(error.message);
+        Alert(error.message);
         return false;
       }
       setMain(res.results[0]);
       setPreview(res.results);
 
     } catch (error) {
-      alert(error.message);
+      Alert(error.message);
     }
   };
 
@@ -58,9 +59,10 @@ export function Home() {
         <Title style={styles.titlePreview}>Prévias</Title>
         <Preview results={preview} />
       </View>
-      {[1, 2, 3, 4].map((section, index) => (
-        <Section key={index} title="Novidades" />
+      {preview.map((section, index) => (
+        <Section section={section} key={index}/>
       ))}
+     
     </ScrollView>
   );
 }
