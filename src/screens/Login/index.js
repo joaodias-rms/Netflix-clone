@@ -22,7 +22,7 @@ export function Login() {
   const navigation = useNavigation();
 
   const checkLogin = async () => {
-    const userLogin = await AsyncStorage.getItem('@username');
+    const userLogin = await AsyncStorage.getItem('username');
     if (userLogin) {
       setLogged(1);
       navigation.navigate('Home');
@@ -47,6 +47,8 @@ export function Login() {
       alert(error.message);
     }
 
+
+
     try {
       const loginPost = await api.post(
         `${api.defaults.baseURL}/authentication/token/validate_with_login?api_key=${APIKEY}`,
@@ -55,9 +57,11 @@ export function Login() {
         },
       );
       const loginRes = loginPost.data;
-      if (loginRes) {
-        navigation.navigate('Home');
+      if (loginRes.error) {
+        Alert(error.message)
       }
+      await AsyncStorage.setItem('username', JSON.stringify(login.username))
+      navigation.navigate('Home');
     } catch (error) {
       Alert(error.message);
     }
