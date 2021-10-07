@@ -10,14 +10,14 @@ import {Title} from 'react-native-paper';
 
 import {styles} from './styles';
 
-export function Section({hasBorderTop, title}) {
+export function Section({section, hasBorderTop, title}) {
   return (
     <View style={styles.container}>
       {hasBorderTop && <View style={styles.borderTop} />}
       <Title style={styles.sectionTitle}>{title}</Title>
       <FlatList
         style={styles.list}
-        data={[1, 2, 3, 4, 5]}
+        data={section}
         renderItem={({item, index}) => (
           <TouchableOpacity key={index}>
             <ImageBackground
