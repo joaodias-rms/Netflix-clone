@@ -1,20 +1,50 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Image,
   FlatList,
   TouchableOpacity,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import {Title} from 'react-native-paper';
+import api from '../../services/api';
+
+const {APIKEY} = process.env;
 
 import {styles} from './styles';
 
 export function Section({section, hasBorderTop, title}) {
+  const [sections, setSections] = useState({});
+
+  const getGenre = async () => {
+    try {
+      const response = await api.get(
+        `${api.defaults.baseURL}/genre/movie/list?api_key=${APIKEY}`,
+      );
+      const res = response.data;
+
+      setSections(res.genres);
+      console.log(sections);
+      if (res.error) {
+        Alert(error.message);
+        return false;
+      }
+    } catch (error) {
+      Alert(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getGenre();
+  }, []);
+
   return (
     <View style={styles.container}>
       {hasBorderTop && <View style={styles.borderTop} />}
-      <Title style={styles.sectionTitle}>{title}</Title>
+      {sections.map((section, index) => (
+        <Title key={index} style={styles.sectionTitle}>{section.name}</Title>
+      ))}
       <FlatList
         style={styles.list}
         data={section}
@@ -25,7 +55,9 @@ export function Section({section, hasBorderTop, title}) {
                 styles.cover,
                 {marginRight: 10, marginLeft: index === 0 ? 20 : 0},
               ]}
-              source={{uri: 'https://i.imgur.com/EJyDFeY.jpg'}}>
+              source={{
+                uri: `http://image.tmdb.org/t/p/original${item.poster_path}`,
+              }}>
               <Image
                 resizeMode="contain"
                 style={styles.coverLogo}
