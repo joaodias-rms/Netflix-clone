@@ -15,7 +15,7 @@ const {APIKEY} = process.env;
 import {styles} from './styles';
 
 export function Section({section, hasBorderTop, title}) {
-  const [sections, setSections] = useState({});
+  const [genres, setGenres] = useState({});
 
   const getGenre = async () => {
     try {
@@ -24,8 +24,8 @@ export function Section({section, hasBorderTop, title}) {
       );
       const res = response.data;
 
-      setSections(res.genres);
-      console.log(sections);
+      setGenres(res.genres);
+      // console.log(sections);
       if (res.error) {
         Alert(error.message);
         return false;
@@ -42,8 +42,10 @@ export function Section({section, hasBorderTop, title}) {
   return (
     <View style={styles.container}>
       {hasBorderTop && <View style={styles.borderTop} />}
-      {sections.map((section, index) => (
-        <Title key={index} style={styles.sectionTitle}>{section.name}</Title>
+      {genres.map(genres => (
+        <Title key={genres.id} style={styles.sectionTitle}>
+          {genres.name}
+        </Title>
       ))}
       <FlatList
         style={styles.list}
