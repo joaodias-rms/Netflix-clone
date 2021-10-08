@@ -18,7 +18,6 @@ export function Home() {
   const [main, setMain] = useState({});
   const [preview, setPreview] = useState([]);
 
-
   const getHome = async () => {
     try {
       const response = await api.get(
@@ -26,18 +25,18 @@ export function Home() {
       );
       const res = response.data;
 
-      // console.log(res);
       if (res.error) {
         Alert(error.message);
         return false;
       }
       setMain(res.results[0]);
       setPreview(res.results);
-
     } catch (error) {
       Alert(error.message);
     }
   };
+
+
 
   useEffect(() => {
     getHome();
@@ -60,9 +59,8 @@ export function Home() {
         <Preview results={preview} />
       </View>
       {preview.map((section, index) => (
-        <Section section={section} key={index}/>
+        <Section section={section} key={index} />
       ))}
-     
     </ScrollView>
   );
 }
